@@ -1,0 +1,17 @@
+{
+  "name": "schedule",
+  "engine": "node 5.5.0",
+  "engineStrict": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "master.js",
+  "scripts": {},
+  "author": "soum",
+  "license": "BSD-2-Clause",
+  "devDependencies": {},
+  "dependencies": {
+    "bootstrap": "v3.3.7",
+    "jquery": "3.1.1",
+    "requirejs": "2.1.22"
+  }
+}
