@@ -1,12 +1,13 @@
 <?php 
-	header("Content-Type:application/json");
+	//header("Content-Type:application/json");
 
-	$event_name = $_GET['eventName'];
-	$event_type = $_GET['eventType'];
-	$event_date = $_GET['eventDate'];
-	$event_creation_date = $_GET['eventCreationDate'];
+	$event_type = $_POST['event'];
+	$event_date = $_POST['date'];
+	$event_time = $_POST['time'];
+	$event_id = $event_type.'-'.$event_date.'-'.$event_time;
+	$creation_date = date("Y-m-d");
 
-	function makeDbCall(){
+	function makeDbCall($event_type, $event_date, $event_time, $event_id,$creation_date){
 		
 		//Connect to the database
     	$host = "127.0.0.1";
@@ -22,13 +23,15 @@
 	      {
 	      echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	      }
-	     $sql = "INSERT INTO newevent (eventid) VALUES ('ghosh')";
+	     $sql = "INSERT INTO newevent (eventid,eventtype,eventdate,eventtime,creationdate) 
+	     VALUES ('$event_id', '$event_type', '$event_date', '$event_time', '$creation_date')";
 	    		
-	    if (!mysqli_query($con,$sql))
-	      {
-	      die('Error: ' . mysqli_error($con));
-	      }
-	    echo "1 record added";
+	    if (!mysqli_query($con,$sql)){
+	      //die('Error: ' . mysqli_error($con));
+	      response(400, 'error', mysqli_error($con));
+	    }
+	    
+	    response(200, 'success', $sql);
 	    mysqli_close($con);
 	}
 
@@ -42,6 +45,6 @@
 		echo $json_response;
 	}
 
-	makeDbCall();
+	makeDbCall($event_type, $event_date, $event_time, $event_id,$creation_date);
 
 ?>

@@ -3,36 +3,51 @@
 <head>
 <title>Title of the document</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="www/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
-<script type='text/javascript' data-main="js/common" src='node_modules/requirejs/require.js'></script>
+<script type='text/javascript' data-main="www/js/common" src='www/node_modules/requirejs/require.js'></script>
 </head>
 
 <body>
 	<div class="container">
-		<h1>Create your event</h1>
-		<form class="event-form">
-		<div class="form-group">
-		    <label for="exampleSelect1">Select Event Type</label>
-		    <select class="form-control" id="exampleSelect1">
-		      <option>badminton</option>
-		      <option>pickleball</option>
-		      <option>handball</option>
-		    </select>
-		</div>
-		<div class="form-group">
-		  <label for="example-datetime-local-input" class="col-2 col-form-label">Select Date and Time</label>
-		  <div class="col-10">
-		    <input class="form-control" type="datetime-local" value="" id="example-datetime-local-input">
-		  </div>
-		</div>
-		<button type="submit" class="btn btn-primary">Create Evenet</button>
+	    <div class="page-header">
+	        <h1>Event Portal</h1>
+            <p class="lead">Create your event schedule and let your friend RSVP</h1>
+        </div>
+        
+		<form class="event-form row">
+    		<div class="form-group col-md-4">
+    		    <label for="col-form-label">Select Event Type</label>
+    		    <select class="form-control" id="event" name="event">
+    		      <option></option>
+    		      <option>badminton</option>
+    		      <option>pickleball</option>
+    		      <option>handball</option>
+    		    </select>
+    		</div>
+    		<div class="form-group col-md-4">
+    		  <label for="example-datetime-local-input" class="col-form-label">Select Date</label>
+    		  
+    		    <input class="form-control" name="date" type="date" value="" id="date">
+    		  
+    		</div>
+    		<div class="form-group col-md-2">
+    		  <label for="example-datetime-local-input" class="col-form-label">Select Time</label>
+    		  
+    		    <input class="form-control" name="time" type="time" value="" id="time">
+    		  
+    		</div>
+    		<div class="col-md-2">
+    		     <label for="example-datetime-local-input" class="col-form-label" style="color: white;">Submit</label>
+    		  <button type="submit" class="btn btn-primary">Create Evenet</button>
+    		</div>
 		</form>
+		<div class="col-md-4 response"></div>
 	</div>
 	<script type='text/javascript'>
 		require(['common'], function(){
-			require(['js/app.js']);
+			require(['www/js/app.js']);
 		})
 	</script>
 </body>
